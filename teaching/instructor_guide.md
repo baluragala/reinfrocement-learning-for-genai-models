@@ -1,6 +1,6 @@
 # C9-W4-S2: Instructor guide
 
-**Deck:** see the link at the end of this guide (speaker notes on every slide). Source: `deck/project/`.
+**Deck:** https://claude.ai/artifact/BVvSrvmKWWfkgijyq5HhjC (29 slides, speaker notes on every slide). Source: `deck/project/`.
 
 ## Reinforcement Learning for GenAI Models · 150 minutes
 
@@ -133,4 +133,4 @@ Replies are cached, so in class they won't differ unless you retrain or change a
 
 ## Deck
 
-Slide deck with speaker notes, one section per notebook: **(link added when published)**
+Slide deck with speaker notes, one section per notebook: https://claude.ai/artifact/BVvSrvmKWWfkgijyq5HhjC. Reference-run numbers on the slides are labelled as such.

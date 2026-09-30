@@ -41,7 +41,7 @@ from *your* run), at least three ✋ predict-first prompts, 🧪 exercises with 
 
 ## Slides
 
-Slide deck with speaker notes, in the same order as the notebooks: see `teaching/instructor_guide.md` for the link. Source: `deck/project/`.
+29-slide deck with speaker notes, in the same order as the notebooks: https://claude.ai/artifact/BVvSrvmKWWfkgijyq5HhjC (private until shared from its Share menu). Source: `deck/project/`.
 
 ## Running it
 

@@ -1,0 +1,78 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-09-30T04:02:02Z"
+  },
+  "lists": "css",
+  "title": "Reinforcement Learning for GenAI Models",
+  "cover": "cover",
+  "order": [
+    "cover",
+    "agenda",
+    "case",
+    "rl-loop",
+    "rl-examples",
+    "explore",
+    "discount",
+    "sl-vs-rl",
+    "hacking",
+    "lifecycle",
+    "sft-limit",
+    "llm-mapping",
+    "loop",
+    "kl",
+    "preferences",
+    "routes",
+    "rm-bias",
+    "rlhf-vs-dpo",
+    "no-knowledge",
+    "setup",
+    "scorecard",
+    "changed",
+    "harder",
+    "graders",
+    "risks",
+    "goodhart",
+    "decide",
+    "takeaway",
+    "close"
+  ],
+  "sections": {
+    "s0": {
+      "description": "Where we are, the agenda, and Acme's small support model",
+      "start": "cover"
+    },
+    "s1": {
+      "description": "RL fundamentals and where RL fits in a model's lifecycle (Notebook 01)",
+      "start": "rl-loop"
+    },
+    "s2": {
+      "description": "Reward and RL for LLMs: sample, score, nudge, and the KL leash (Notebook 02)",
+      "start": "llm-mapping"
+    },
+    "s3": {
+      "description": "Preference-based RL: RLHF and DPO (Notebook 03)",
+      "start": "routes"
+    },
+    "s4": {
+      "description": "Comparing base, LoRA and RL-tuned outputs (Notebook 04)",
+      "start": "setup"
+    },
+    "s5": {
+      "description": "Risks, the decision, takeaway and Q&A (Notebook 05)",
+      "start": "risks"
+    }
+  },
+  "faces": {
+    "ibm-plex-sans": {
+      "family": "IBM Plex Sans",
+      "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+    },
+    "jetbrains-mono": {
+      "family": "JetBrains Mono",
+      "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+    }
+  },
+  "designSystems": []
+}
