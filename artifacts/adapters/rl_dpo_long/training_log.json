@@ -1,0 +1,982 @@
+{
+ "method": "DPO, trained harder (from the LoRA SFT adapter)",
+ "pairs": 480,
+ "steps": 120,
+ "epochs": 2,
+ "device": "mps",
+ "seconds": 180.4,
+ "trainable_params": 8798208,
+ "total_params": 502830976,
+ "models_in_memory": 2,
+ "config": {
+  "beta": 0.1,
+  "lr": 5e-05,
+  "epochs": 2,
+  "batch_size": 8,
+  "micro_batch": 4,
+  "max_len": 256
+ },
+ "log": [
+  {
+   "step": 1,
+   "loss": 0.6904,
+   "reward_chosen": 0.0061,
+   "reward_rejected": 0.0005,
+   "margin": 0.0056,
+   "accuracy": 0.625
+  },
+  {
+   "step": 2,
+   "loss": 0.7272,
+   "reward_chosen": -0.0591,
+   "reward_rejected": -0.0065,
+   "margin": -0.0526,
+   "accuracy": 0.625
+  },
+  {
+   "step": 3,
+   "loss": 0.6885,
+   "reward_chosen": 0.0006,
+   "reward_rejected": -0.009,
+   "margin": 0.0095,
+   "accuracy": 0.5
+  },
+  {
+   "step": 4,
+   "loss": 0.7315,
+   "reward_chosen": -0.0583,
+   "reward_rejected": 0.0026,
+   "margin": -0.0608,
+   "accuracy": 0.625
+  },
+  {
+   "step": 5,
+   "loss": 0.6777,
+   "reward_chosen": 0.0065,
+   "reward_rejected": -0.0248,
+   "margin": 0.0313,
+   "accuracy": 0.875
+  },
+  {
+   "step": 6,
+   "loss": 0.6686,
+   "reward_chosen": -0.0046,
+   "reward_rejected": -0.0563,
+   "margin": 0.0517,
+   "accuracy": 0.875
+  },
+  {
+   "step": 7,
+   "loss": 0.644,
+   "reward_chosen": 0.0228,
+   "reward_rejected": -0.0784,
+   "margin": 0.1012,
+   "accuracy": 1.0
+  },
+  {
+   "step": 8,
+   "loss": 0.5778,
+   "reward_chosen": 0.0677,
+   "reward_rejected": -0.2182,
+   "margin": 0.2859,
+   "accuracy": 1.0
+  },
+  {
+   "step": 9,
+   "loss": 0.557,
+   "reward_chosen": 0.026,
+   "reward_rejected": -0.3296,
+   "margin": 0.3555,
+   "accuracy": 1.0
+  },
+  {
+   "step": 10,
+   "loss": 0.5405,
+   "reward_chosen": 0.0199,
+   "reward_rejected": -0.3348,
+   "margin": 0.3547,
+   "accuracy": 1.0
+  },
+  {
+   "step": 11,
+   "loss": 0.8993,
+   "reward_chosen": -0.2973,
+   "reward_rejected": -0.2788,
+   "margin": -0.0185,
+   "accuracy": 0.875
+  },
+  {
+   "step": 12,
+   "loss": 0.3739,
+   "reward_chosen": 0.1756,
+   "reward_rejected": -0.9589,
+   "margin": 1.1345,
+   "accuracy": 1.0
+  },
+  {
+   "step": 13,
+   "loss": 0.4087,
+   "reward_chosen": 0.0805,
+   "reward_rejected": -0.7602,
+   "margin": 0.8407,
+   "accuracy": 1.0
+  },
+  {
+   "step": 14,
+   "loss": 0.3945,
+   "reward_chosen": 0.0079,
+   "reward_rejected": -0.9168,
+   "margin": 0.9247,
+   "accuracy": 1.0
+  },
+  {
+   "step": 15,
+   "loss": 0.4051,
+   "reward_chosen": 0.0552,
+   "reward_rejected": -0.8765,
+   "margin": 0.9317,
+   "accuracy": 1.0
+  },
+  {
+   "step": 16,
+   "loss": 0.4086,
+   "reward_chosen": 0.0342,
+   "reward_rejected": -0.8567,
+   "margin": 0.8909,
+   "accuracy": 1.0
+  },
+  {
+   "step": 17,
+   "loss": 0.317,
+   "reward_chosen": 0.0411,
+   "reward_rejected": -1.2172,
+   "margin": 1.2583,
+   "accuracy": 1.0
+  },
+  {
+   "step": 18,
+   "loss": 0.6172,
+   "reward_chosen": -0.5149,
+   "reward_rejected": -1.0757,
+   "margin": 0.5607,
+   "accuracy": 0.875
+  },
+  {
+   "step": 19,
+   "loss": 0.2361,
+   "reward_chosen": 0.0508,
+   "reward_rejected": -1.7255,
+   "margin": 1.7763,
+   "accuracy": 1.0
+  },
+  {
+   "step": 20,
+   "loss": 0.9539,
+   "reward_chosen": -0.6673,
+   "reward_rejected": -1.0518,
+   "margin": 0.3845,
+   "accuracy": 0.875
+  },
+  {
+   "step": 21,
+   "loss": 1.5778,
+   "reward_chosen": -2.2067,
+   "reward_rejected": -2.0012,
+   "margin": -0.2055,
+   "accuracy": 0.625
+  },
+  {
+   "step": 22,
+   "loss": 0.2025,
+   "reward_chosen": -0.3587,
+   "reward_rejected": -2.5894,
+   "margin": 2.2307,
+   "accuracy": 1.0
+  },
+  {
+   "step": 23,
+   "loss": 1.0486,
+   "reward_chosen": -1.7134,
+   "reward_rejected": -2.7729,
+   "margin": 1.0595,
+   "accuracy": 0.75
+  },
+  {
+   "step": 24,
+   "loss": 0.6419,
+   "reward_chosen": -0.8697,
+   "reward_rejected": -1.8669,
+   "margin": 0.9971,
+   "accuracy": 0.625
+  },
+  {
+   "step": 25,
+   "loss": 0.1511,
+   "reward_chosen": -0.0476,
+   "reward_rejected": -2.3564,
+   "margin": 2.3088,
+   "accuracy": 1.0
+  },
+  {
+   "step": 26,
+   "loss": 0.1988,
+   "reward_chosen": -0.3205,
+   "reward_rejected": -3.3947,
+   "margin": 3.0742,
+   "accuracy": 0.875
+  },
+  {
+   "step": 27,
+   "loss": 1.7141,
+   "reward_chosen": -1.5328,
+   "reward_rejected": -1.8975,
+   "margin": 0.3647,
+   "accuracy": 0.75
+  },
+  {
+   "step": 28,
+   "loss": 0.7163,
+   "reward_chosen": -0.7089,
+   "reward_rejected": -4.2324,
+   "margin": 3.5235,
+   "accuracy": 0.875
+  },
+  {
+   "step": 29,
+   "loss": 0.8936,
+   "reward_chosen": -0.5285,
+   "reward_rejected": -3.5958,
+   "margin": 3.0673,
+   "accuracy": 0.875
+  },
+  {
+   "step": 30,
+   "loss": 0.0326,
+   "reward_chosen": 0.0158,
+   "reward_rejected": -4.2578,
+   "margin": 4.2736,
+   "accuracy": 1.0
+  },
+  {
+   "step": 31,
+   "loss": 0.1058,
+   "reward_chosen": -0.2303,
+   "reward_rejected": -4.3037,
+   "margin": 4.0735,
+   "accuracy": 1.0
+  },
+  {
+   "step": 32,
+   "loss": 0.0631,
+   "reward_chosen": -0.2898,
+   "reward_rejected": -4.6143,
+   "margin": 4.3245,
+   "accuracy": 1.0
+  },
+  {
+   "step": 33,
+   "loss": 1.4494,
+   "reward_chosen": -1.4902,
+   "reward_rejected": -2.7005,
+   "margin": 1.2103,
+   "accuracy": 0.625
+  },
+  {
+   "step": 34,
+   "loss": 0.0163,
+   "reward_chosen": -0.2676,
+   "reward_rejected": -5.354,
+   "margin": 5.0864,
+   "accuracy": 1.0
+  },
+  {
+   "step": 35,
+   "loss": 0.2345,
+   "reward_chosen": -0.4562,
+   "reward_rejected": -3.1715,
+   "margin": 2.7153,
+   "accuracy": 0.75
+  },
+  {
+   "step": 36,
+   "loss": 0.217,
+   "reward_chosen": -0.2414,
+   "reward_rejected": -3.5765,
+   "margin": 3.3351,
+   "accuracy": 0.875
+  },
+  {
+   "step": 37,
+   "loss": 0.1797,
+   "reward_chosen": -0.1957,
+   "reward_rejected": -3.8136,
+   "margin": 3.6179,
+   "accuracy": 0.875
+  },
+  {
+   "step": 38,
+   "loss": 0.0206,
+   "reward_chosen": -0.0472,
+   "reward_rejected": -4.1899,
+   "margin": 4.1427,
+   "accuracy": 1.0
+  },
+  {
+   "step": 39,
+   "loss": 0.009,
+   "reward_chosen": 0.0615,
+   "reward_rejected": -5.0313,
+   "margin": 5.0928,
+   "accuracy": 1.0
+  },
+  {
+   "step": 40,
+   "loss": 0.0246,
+   "reward_chosen": -0.5372,
+   "reward_rejected": -6.0086,
+   "margin": 5.4714,
+   "accuracy": 1.0
+  },
+  {
+   "step": 41,
+   "loss": 0.7463,
+   "reward_chosen": -1.0632,
+   "reward_rejected": -5.0301,
+   "margin": 3.9669,
+   "accuracy": 0.875
+  },
+  {
+   "step": 42,
+   "loss": 2.0777,
+   "reward_chosen": -2.3344,
+   "reward_rejected": -5.0125,
+   "margin": 2.6782,
+   "accuracy": 0.875
+  },
+  {
+   "step": 43,
+   "loss": 0.1667,
+   "reward_chosen": -0.2512,
+   "reward_rejected": -5.2803,
+   "margin": 5.0292,
+   "accuracy": 0.875
+  },
+  {
+   "step": 44,
+   "loss": 0.0098,
+   "reward_chosen": 0.0079,
+   "reward_rejected": -5.505,
+   "margin": 5.513,
+   "accuracy": 1.0
+  },
+  {
+   "step": 45,
+   "loss": 0.4807,
+   "reward_chosen": -0.6754,
+   "reward_rejected": -5.371,
+   "margin": 4.6956,
+   "accuracy": 0.875
+  },
+  {
+   "step": 46,
+   "loss": 0.4149,
+   "reward_chosen": -1.2054,
+   "reward_rejected": -6.2069,
+   "margin": 5.0015,
+   "accuracy": 0.875
+  },
+  {
+   "step": 47,
+   "loss": 0.023,
+   "reward_chosen": -0.3045,
+   "reward_rejected": -4.7434,
+   "margin": 4.4389,
+   "accuracy": 1.0
+  },
+  {
+   "step": 48,
+   "loss": 0.0087,
+   "reward_chosen": -0.492,
+   "reward_rejected": -6.9374,
+   "margin": 6.4454,
+   "accuracy": 1.0
+  },
+  {
+   "step": 49,
+   "loss": 0.0966,
+   "reward_chosen": -0.7074,
+   "reward_rejected": -6.3397,
+   "margin": 5.6323,
+   "accuracy": 0.875
+  },
+  {
+   "step": 50,
+   "loss": 0.1155,
+   "reward_chosen": -1.0113,
+   "reward_rejected": -6.1906,
+   "margin": 5.1793,
+   "accuracy": 0.875
+  },
+  {
+   "step": 51,
+   "loss": 0.068,
+   "reward_chosen": -0.5535,
+   "reward_rejected": -6.1345,
+   "margin": 5.5809,
+   "accuracy": 1.0
+  },
+  {
+   "step": 52,
+   "loss": 0.0281,
+   "reward_chosen": -0.2852,
+   "reward_rejected": -7.6554,
+   "margin": 7.3702,
+   "accuracy": 1.0
+  },
+  {
+   "step": 53,
+   "loss": 0.1181,
+   "reward_chosen": -0.5456,
+   "reward_rejected": -5.9459,
+   "margin": 5.4003,
+   "accuracy": 1.0
+  },
+  {
+   "step": 54,
+   "loss": 0.1072,
+   "reward_chosen": -1.0983,
+   "reward_rejected": -8.5045,
+   "margin": 7.4062,
+   "accuracy": 0.875
+  },
+  {
+   "step": 55,
+   "loss": 0.0409,
+   "reward_chosen": -0.3242,
+   "reward_rejected": -6.8412,
+   "margin": 6.517,
+   "accuracy": 1.0
+  },
+  {
+   "step": 56,
+   "loss": 0.0926,
+   "reward_chosen": -0.3294,
+   "reward_rejected": -5.8497,
+   "margin": 5.5203,
+   "accuracy": 0.875
+  },
+  {
+   "step": 57,
+   "loss": 0.0009,
+   "reward_chosen": -0.4284,
+   "reward_rejected": -8.568,
+   "margin": 8.1396,
+   "accuracy": 1.0
+  },
+  {
+   "step": 58,
+   "loss": 0.1293,
+   "reward_chosen": -1.3157,
+   "reward_rejected": -7.9438,
+   "margin": 6.6281,
+   "accuracy": 0.875
+  },
+  {
+   "step": 59,
+   "loss": 0.2247,
+   "reward_chosen": -0.7456,
+   "reward_rejected": -7.6932,
+   "margin": 6.9476,
+   "accuracy": 0.875
+  },
+  {
+   "step": 60,
+   "loss": 0.0516,
+   "reward_chosen": -1.0013,
+   "reward_rejected": -6.8216,
+   "margin": 5.8203,
+   "accuracy": 1.0
+  },
+  {
+   "step": 61,
+   "loss": 0.0002,
+   "reward_chosen": -0.4374,
+   "reward_rejected": -9.8739,
+   "margin": 9.4365,
+   "accuracy": 1.0
+  },
+  {
+   "step": 62,
+   "loss": 1.9323,
+   "reward_chosen": -2.5045,
+   "reward_rejected": -6.7146,
+   "margin": 4.2101,
+   "accuracy": 0.75
+  },
+  {
+   "step": 63,
+   "loss": 0.0009,
+   "reward_chosen": -0.9689,
+   "reward_rejected": -10.3444,
+   "margin": 9.3755,
+   "accuracy": 1.0
+  },
+  {
+   "step": 64,
+   "loss": 0.0035,
+   "reward_chosen": -1.1085,
+   "reward_rejected": -7.8934,
+   "margin": 6.7849,
+   "accuracy": 1.0
+  },
+  {
+   "step": 65,
+   "loss": 0.0894,
+   "reward_chosen": -1.0246,
+   "reward_rejected": -7.9205,
+   "margin": 6.8959,
+   "accuracy": 0.875
+  },
+  {
+   "step": 66,
+   "loss": 0.029,
+   "reward_chosen": -1.0818,
+   "reward_rejected": -9.8688,
+   "margin": 8.787,
+   "accuracy": 1.0
+  },
+  {
+   "step": 67,
+   "loss": 0.0202,
+   "reward_chosen": -1.2556,
+   "reward_rejected": -8.9833,
+   "margin": 7.7277,
+   "accuracy": 1.0
+  },
+  {
+   "step": 68,
+   "loss": 0.7978,
+   "reward_chosen": -1.8871,
+   "reward_rejected": -7.9482,
+   "margin": 6.061,
+   "accuracy": 0.75
+  },
+  {
+   "step": 69,
+   "loss": 0.0016,
+   "reward_chosen": -0.6271,
+   "reward_rejected": -7.7748,
+   "margin": 7.1477,
+   "accuracy": 1.0
+  },
+  {
+   "step": 70,
+   "loss": 0.0008,
+   "reward_chosen": -0.853,
+   "reward_rejected": -8.7658,
+   "margin": 7.9128,
+   "accuracy": 1.0
+  },
+  {
+   "step": 71,
+   "loss": 0.0148,
+   "reward_chosen": -0.7993,
+   "reward_rejected": -8.7445,
+   "margin": 7.9452,
+   "accuracy": 1.0
+  },
+  {
+   "step": 72,
+   "loss": 0.3535,
+   "reward_chosen": -2.2923,
+   "reward_rejected": -8.1112,
+   "margin": 5.8189,
+   "accuracy": 0.875
+  },
+  {
+   "step": 73,
+   "loss": 0.0143,
+   "reward_chosen": -1.264,
+   "reward_rejected": -9.2711,
+   "margin": 8.0071,
+   "accuracy": 1.0
+  },
+  {
+   "step": 74,
+   "loss": 0.0845,
+   "reward_chosen": -1.0546,
+   "reward_rejected": -9.6324,
+   "margin": 8.5778,
+   "accuracy": 1.0
+  },
+  {
+   "step": 75,
+   "loss": 0.001,
+   "reward_chosen": -0.6714,
+   "reward_rejected": -10.8247,
+   "margin": 10.1533,
+   "accuracy": 1.0
+  },
+  {
+   "step": 76,
+   "loss": 0.5094,
+   "reward_chosen": -1.3189,
+   "reward_rejected": -8.4161,
+   "margin": 7.0972,
+   "accuracy": 0.875
+  },
+  {
+   "step": 77,
+   "loss": 0.0244,
+   "reward_chosen": -0.6939,
+   "reward_rejected": -9.9155,
+   "margin": 9.2216,
+   "accuracy": 1.0
+  },
+  {
+   "step": 78,
+   "loss": 0.0322,
+   "reward_chosen": -1.3784,
+   "reward_rejected": -10.504,
+   "margin": 9.1256,
+   "accuracy": 1.0
+  },
+  {
+   "step": 79,
+   "loss": 0.0923,
+   "reward_chosen": -1.2282,
+   "reward_rejected": -10.6961,
+   "margin": 9.4679,
+   "accuracy": 0.875
+  },
+  {
+   "step": 80,
+   "loss": 0.3929,
+   "reward_chosen": -1.9747,
+   "reward_rejected": -8.6394,
+   "margin": 6.6648,
+   "accuracy": 0.875
+  },
+  {
+   "step": 81,
+   "loss": 0.1423,
+   "reward_chosen": -1.9458,
+   "reward_rejected": -7.9536,
+   "margin": 6.0077,
+   "accuracy": 1.0
+  },
+  {
+   "step": 82,
+   "loss": 0.018,
+   "reward_chosen": -1.625,
+   "reward_rejected": -9.4634,
+   "margin": 7.8384,
+   "accuracy": 1.0
+  },
+  {
+   "step": 83,
+   "loss": 0.6777,
+   "reward_chosen": -1.665,
+   "reward_rejected": -7.1006,
+   "margin": 5.4356,
+   "accuracy": 0.875
+  },
+  {
+   "step": 84,
+   "loss": 0.5962,
+   "reward_chosen": -1.3344,
+   "reward_rejected": -8.6392,
+   "margin": 7.3048,
+   "accuracy": 0.875
+  },
+  {
+   "step": 85,
+   "loss": 0.0172,
+   "reward_chosen": -0.8759,
+   "reward_rejected": -8.3494,
+   "margin": 7.4734,
+   "accuracy": 1.0
+  },
+  {
+   "step": 86,
+   "loss": 0.0008,
+   "reward_chosen": -1.7304,
+   "reward_rejected": -10.755,
+   "margin": 9.0246,
+   "accuracy": 1.0
+  },
+  {
+   "step": 87,
+   "loss": 0.0003,
+   "reward_chosen": -0.7991,
+   "reward_rejected": -10.8169,
+   "margin": 10.0178,
+   "accuracy": 1.0
+  },
+  {
+   "step": 88,
+   "loss": 0.0108,
+   "reward_chosen": -0.7623,
+   "reward_rejected": -8.0801,
+   "margin": 7.3178,
+   "accuracy": 1.0
+  },
+  {
+   "step": 89,
+   "loss": 0.0003,
+   "reward_chosen": -0.6443,
+   "reward_rejected": -9.7774,
+   "margin": 9.1331,
+   "accuracy": 1.0
+  },
+  {
+   "step": 90,
+   "loss": 0.0009,
+   "reward_chosen": -0.9527,
+   "reward_rejected": -10.2228,
+   "margin": 9.2701,
+   "accuracy": 1.0
+  },
+  {
+   "step": 91,
+   "loss": 0.0188,
+   "reward_chosen": -1.1053,
+   "reward_rejected": -8.8914,
+   "margin": 7.786,
+   "accuracy": 1.0
+  },
+  {
+   "step": 92,
+   "loss": 0.0002,
+   "reward_chosen": -0.9494,
+   "reward_rejected": -9.8885,
+   "margin": 8.9391,
+   "accuracy": 1.0
+  },
+  {
+   "step": 93,
+   "loss": 0.0139,
+   "reward_chosen": -0.7072,
+   "reward_rejected": -8.9939,
+   "margin": 8.2867,
+   "accuracy": 1.0
+  },
+  {
+   "step": 94,
+   "loss": 0.0008,
+   "reward_chosen": -1.3413,
+   "reward_rejected": -9.8064,
+   "margin": 8.4651,
+   "accuracy": 1.0
+  },
+  {
+   "step": 95,
+   "loss": 0.0673,
+   "reward_chosen": -0.8528,
+   "reward_rejected": -8.615,
+   "margin": 7.7621,
+   "accuracy": 1.0
+  },
+  {
+   "step": 96,
+   "loss": 0.011,
+   "reward_chosen": -1.0127,
+   "reward_rejected": -8.7571,
+   "margin": 7.7444,
+   "accuracy": 1.0
+  },
+  {
+   "step": 97,
+   "loss": 1.1584,
+   "reward_chosen": -2.4354,
+   "reward_rejected": -8.8151,
+   "margin": 6.3796,
+   "accuracy": 0.875
+  },
+  {
+   "step": 98,
+   "loss": 0.0007,
+   "reward_chosen": -0.7511,
+   "reward_rejected": -9.7792,
+   "margin": 9.0281,
+   "accuracy": 1.0
+  },
+  {
+   "step": 99,
+   "loss": 0.8683,
+   "reward_chosen": -1.3376,
+   "reward_rejected": -8.6103,
+   "margin": 7.2727,
+   "accuracy": 0.875
+  },
+  {
+   "step": 100,
+   "loss": 0.8407,
+   "reward_chosen": -1.7275,
+   "reward_rejected": -7.3892,
+   "margin": 5.6617,
+   "accuracy": 0.875
+  },
+  {
+   "step": 101,
+   "loss": 0.1899,
+   "reward_chosen": -1.1224,
+   "reward_rejected": -7.3546,
+   "margin": 6.2321,
+   "accuracy": 0.875
+  },
+  {
+   "step": 102,
+   "loss": 0.0309,
+   "reward_chosen": -0.3458,
+   "reward_rejected": -7.1556,
+   "margin": 6.8098,
+   "accuracy": 1.0
+  },
+  {
+   "step": 103,
+   "loss": 0.0003,
+   "reward_chosen": -1.1891,
+   "reward_rejected": -11.2913,
+   "margin": 10.1022,
+   "accuracy": 1.0
+  },
+  {
+   "step": 104,
+   "loss": 0.0002,
+   "reward_chosen": -0.6031,
+   "reward_rejected": -10.2574,
+   "margin": 9.6543,
+   "accuracy": 1.0
+  },
+  {
+   "step": 105,
+   "loss": 0.0635,
+   "reward_chosen": -1.1696,
+   "reward_rejected": -9.1677,
+   "margin": 7.9982,
+   "accuracy": 1.0
+  },
+  {
+   "step": 106,
+   "loss": 0.0009,
+   "reward_chosen": -1.1732,
+   "reward_rejected": -10.2505,
+   "margin": 9.0773,
+   "accuracy": 1.0
+  },
+  {
+   "step": 107,
+   "loss": 0.6692,
+   "reward_chosen": -1.8052,
+   "reward_rejected": -8.4545,
+   "margin": 6.6493,
+   "accuracy": 0.875
+  },
+  {
+   "step": 108,
+   "loss": 0.0884,
+   "reward_chosen": -0.9447,
+   "reward_rejected": -9.1547,
+   "margin": 8.21,
+   "accuracy": 1.0
+  },
+  {
+   "step": 109,
+   "loss": 0.4447,
+   "reward_chosen": -1.2995,
+   "reward_rejected": -5.8409,
+   "margin": 4.5414,
+   "accuracy": 0.75
+  },
+  {
+   "step": 110,
+   "loss": 0.3586,
+   "reward_chosen": -1.6616,
+   "reward_rejected": -7.202,
+   "margin": 5.5404,
+   "accuracy": 0.875
+  },
+  {
+   "step": 111,
+   "loss": 0.0006,
+   "reward_chosen": -0.5078,
+   "reward_rejected": -8.9372,
+   "margin": 8.4294,
+   "accuracy": 1.0
+  },
+  {
+   "step": 112,
+   "loss": 0.0019,
+   "reward_chosen": -1.68,
+   "reward_rejected": -11.8698,
+   "margin": 10.1898,
+   "accuracy": 1.0
+  },
+  {
+   "step": 113,
+   "loss": 0.0147,
+   "reward_chosen": -1.6828,
+   "reward_rejected": -10.3523,
+   "margin": 8.6695,
+   "accuracy": 1.0
+  },
+  {
+   "step": 114,
+   "loss": 0.869,
+   "reward_chosen": -1.8081,
+   "reward_rejected": -6.437,
+   "margin": 4.6289,
+   "accuracy": 0.875
+  },
+  {
+   "step": 115,
+   "loss": 0.001,
+   "reward_chosen": -1.0434,
+   "reward_rejected": -9.7351,
+   "margin": 8.6917,
+   "accuracy": 1.0
+  },
+  {
+   "step": 116,
+   "loss": 0.0152,
+   "reward_chosen": -0.805,
+   "reward_rejected": -8.9617,
+   "margin": 8.1568,
+   "accuracy": 1.0
+  },
+  {
+   "step": 117,
+   "loss": 0.0229,
+   "reward_chosen": -2.2445,
+   "reward_rejected": -9.3137,
+   "margin": 7.0692,
+   "accuracy": 1.0
+  },
+  {
+   "step": 118,
+   "loss": 0.1555,
+   "reward_chosen": -0.9629,
+   "reward_rejected": -9.7199,
+   "margin": 8.757,
+   "accuracy": 0.875
+  },
+  {
+   "step": 119,
+   "loss": 0.0121,
+   "reward_chosen": -1.2861,
+   "reward_rejected": -9.3302,
+   "margin": 8.0442,
+   "accuracy": 1.0
+  },
+  {
+   "step": 120,
+   "loss": 0.6167,
+   "reward_chosen": -1.3493,
+   "reward_rejected": -8.0912,
+   "margin": 6.7419,
+   "accuracy": 0.875
+  }
+ ],
+ "note": "models_in_memory counts the frozen reference; its log-probs were precomputed once"
+}
