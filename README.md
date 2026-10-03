@@ -30,13 +30,13 @@ The judge in Notebook 04 is **Qwen2.5-1.5B-Instruct**. Model names live in one f
 
 | # | Section (session plan) | Min | What happens |
 |---|---|---|---|
-| **01** | RL fundamentals & the GenAI lifecycle | 40 | ε-greedy banner recommender (exploration vs exploitation), robot grid with Q-learning (the loop, discounting), behaviour cloning vs RL, a race car that reward-hacks a turbo pad; then pretraining → SFT/LoRA → RL on Acme's model, and why SFT can't rank replies |
+| **01** | RL fundamentals & the GenAI lifecycle | 40 | **Chapter 1 · Pip learns by trying** (new story format): a robot learns a maze from stars, patience vs a quick prize, three Pips race to pick banners (curiosity), copy-cat vs star-trained Pip, a race car that games its stars (learners fix it), then school → shadowing → coaching on Acme's real model |
 | **02** | Reward and RL for LLMs | 30 | RL terms mapped to LLMs, a readable reward function, sampling real replies and scoring them, sample → score → nudge on a miniature policy, the KL leash (β), human preferences as the reward source |
 | **03** | Preference-based RL: RLHF and DPO | 30 | a Bradley-Terry reward model whose weights expose the raters' biases, RLHF vs DPO on the same pairs, cost (work done), control (editing the reward), label noise, and why RL adds no knowledge |
 | **04** | Comparing base, LoRA and RL outputs | 30 | DPO reward trend, predict-then-reveal scorecard across instruction following, tone, verbosity, accuracy and refusals, side-by-side replies, what LoRA vs RL changed, over-training side effects, rule checks vs LLM judge (position and verbosity bias) vs blinded human review, cost |
 | **05** | Risks, conclusion and Q&A | 15 | sycophancy and over-refusal probes, over-optimisation (toy curve plus three real points), benchmark transfer vs a vendor RL model, a decision checklist, wrap-up |
 
-Every notebook has the same step shape (why + inputs → code → how to read the output → an explanation computed
+Chapter 1 uses the new story format: short beats (🎬 story → ▶️ one short cell → 👀 a visual → 💬 a takeaway), quick polls, a hands-on challenge, sliders and a quiz. Notebooks 02–05 are being moved to the same format. They currently have the original step shape (why + inputs → code → how to read the output → an explanation computed
 from *your* run), at least three ✋ predict-first prompts, 🧪 exercises with hidden solutions, and a glossary.
 
 ## Slides

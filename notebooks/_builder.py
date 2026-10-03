@@ -219,3 +219,56 @@ def build(module) -> nbformat.NotebookNode:
     nb.cells = ([head, md(SCENARIO_MD), md(context_md(module)), setup_cell(), md(RUNTIME_MD), code(RUNTIME_CELL)]
                 + list(module.CELLS))
     return nb
+
+
+# ================================================================== story-style notebooks (v2)
+# Short beats instead of long steps:   🎬 story → ▶️ play (short code) → 💬 takeaway
+# tests/test_notebooks.py keeps these notebooks short, plain-worded and formula-free.
+
+def story(text: str):
+    return _tagged(md(text), "story")
+
+
+def play(src: str):
+    return _tagged(code(src), "play")
+
+
+def takeaway(text: str):
+    return _tagged(md(f"> 💬 **{text.strip()}**"), "takeaway")
+
+
+def poll(question: str, options: list[str]):
+    opts = "\n".join(f"- **{chr(65 + i)}.** {o}" for i, o in enumerate(options))
+    return _tagged(md(f"### ✋ Quick poll\n{question.strip()}\n\n{opts}\n\n*Pick one before you run the next cell!*"), "poll")
+
+
+def challenge(title: str, task: str, src: str):
+    return [_tagged(md(f"### 🏆 Challenge: {title}\n{task.strip()}"), "challenge-intro"), _tagged(code(src), "challenge")]
+
+
+def curious(title: str, text: str):
+    """Optional depth, folded away. The only place formulas are allowed."""
+    return _tagged(md(f"<details><summary>🤓 <b>For the curious:</b> {title}</summary>\n\n{text.strip()}\n\n</details>"), "curious")
+
+
+def chapter_setup():
+    cell = setup_cell()
+    cell["source"] = cell["source"].replace(
+        'print(f"rllab {rl.__version__} ready from {_src} · base model: {rl.config.BASE_MODEL}")',
+        'from rllab import ui, pip as P\nimport warnings; warnings.filterwarnings("ignore")\n'
+        'print("✅ Pip\'s lab is ready. Run the cells from top to bottom; each one takes a few seconds.")')
+    cell["source"] = cell["source"].replace('"pandas", "matplotlib"]', '"pandas", "matplotlib", "ipywidgets"]')
+    return cell
+
+
+def build_story(module) -> nbformat.NotebookNode:
+    nb = nbformat.v4.new_notebook()
+    nb.metadata["kernelspec"] = {"name": "python3", "display_name": "Python 3", "language": "python"}
+    nb.metadata["language_info"] = {"name": "python"}
+    nb.metadata["colab"] = {"provenance": [], "toc_visible": True}
+    nb.metadata["rllab_style"] = "story"
+    mission = "\n".join(f"- {m}" for m in module.MISSION)
+    head = md(f"{colab_badge(module.NOTEBOOK)}\n\n# {module.TITLE}\n\n"
+              f"**{SESSION}** · ⏱️ {module.MINUTES} min\n\n{module.HOOK}\n\n### 🎯 Your mission\n{mission}")
+    nb.cells = [head, chapter_setup()] + list(module.CELLS)
+    return nb

@@ -52,17 +52,21 @@ Colab T4 is in the same range. Learners never train.
 | 1:45–2:15 | 4 · Comparing base, LoRA and RL outputs | 04 | Predict → reveal, guided analysis, human vote |
 | 2:15–2:30 | 5 · Risks, conclusion and Q&A | 05 | Discussion + Q&A |
 
-### 0:00–0:40 · Notebook 01: RL fundamentals and lifecycle
+### 0:00–0:40 · Chapter 1: Pip learns by trying (`01_pip_learns_by_trying.ipynb`)
 
-| Min | What happens |
-|---|---|
-| 0–5 | Purpose and structure; the Acme scenario. "Last week you evaluated an agent. Today: how are models *shaped*, and should Acme shape its own?" |
-| 5–8 | §1 the RL picture; the agent/environment/state/action/reward/policy table, including the LLM row as a teaser. |
-| 8–14 | §2 banner recommender. Predict, run, then the ε sweep. **Reference run:** ε = 0 never finds the best banner (0% of runs), ε = 0.1 gets the most clicks, ε = 0.5 finds it 93% of the time but wastes impressions. |
-| 14–22 | §3 robot. Read the printed loop (observe → act → reward → update). Predict γ. **Reference:** γ = 0.3 takes the +2 coin in 3 steps; γ = 0.95 walks 10 steps to the +10 goal. The 💡 cell shows the discounted value of +10 at each γ. |
-| 22–26 | §4 supervised vs RL: behaviour cloning copies the operator's coin habit; Q-learning reaches the goal. Tie it to SFT vs RL. |
-| 26–32 | §5 reward hacking: the race car circles the turbo pad for 80 steps (40 pad visits) and never finishes. Do the fix-the-reward exercise together. Then the 2-minute "your own example" discussion. |
-| 32–40 | §6 lifecycle. The base model *answers* but generically (it invents "$10 free shipping"), because modern base models have seen lots of Q&A. LoRA answers in Acme's voice. §6.3: SFT reproduces the transcripts' style mix (54% good, 23% verbose, 23% curt) and can't rank them. **That gap motivates the rest of the session.** |
+Story format: you coach **Pip**, who can only learn from ⭐ stars. Read the 🎬 lines aloud, take a show of hands at each ✋ poll, run the ▶️ cell, and read the 💬 takeaway.
+
+| Min | Beat | What the room sees |
+|---|---|---|
+| 0–4 | Meet Pip, first random wander | maze in emoji; an animation of Pip stumbling about |
+| 4–10 | Practice, the 4-beat loop, the mind map, word bank | learning curve with "exploring" vs "figured it out" regions; look → move → stars → remember; arrows Pip drew for itself |
+| 10–15 | ✋ Patience poll → Impatient vs Patient Pip, slider | side-by-side routes: coin vs goal; learners drag the patience slider |
+| 15–20 | ✋ Curiosity poll → banner race | which banners each Pip showed: Stubborn Pip stuck on ⛺, the others find 🔦 |
+| 20–23 | Copy-cat vs Star Pip | copying Sam takes the coin; stars reach the goal |
+| 23–30 | ✋ Race-car poll → reward hacking → 🏆 challenge | the car circles the ⚡ pad; learners change two numbers until 🏆 |
+| 30–32 | 🗣️ Spot the stars (YouTube / Maps / chess) | discussion |
+| 32–38 | School → shadowing → coaching | next-word guesses; chat bubbles from School-Pip vs Shadowing-Pip; "the copying problem" bars |
+| 38–40 | 3 things to remember + quiz | clickable quiz with score |
 
 ### 0:40–1:10 · Notebook 02: Reward and RL for LLMs
 
