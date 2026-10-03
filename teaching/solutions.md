@@ -51,7 +51,7 @@ much the agreement feature also appears elsewhere. Neither method can see that t
 
 ### E3 · Tune β
 Expect DPO's KL to fall steadily as β grows, with gold flat until the policy stops moving. With `exploit=True`, RLHF's
-gold rises and then collapses as β shrinks (the over-optimisation curve from Notebook 05). Pick β for RLHF near the
+gold rises and then collapses as β shrinks (the over-optimisation curve from Chapter 5). Pick β for RLHF near the
 gold peak; for DPO a wider range works, because the fixed pairs never contain the exploit reply. That's also a
 reminder that DPO can't *discover* new failure modes, and it can't discover new good behaviours either.
 

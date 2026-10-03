@@ -9,6 +9,7 @@ from __future__ import annotations
 import base64
 import html
 import io
+import re
 
 from IPython.display import HTML, Image, display
 
@@ -221,6 +222,14 @@ def slider(fn, values, description, default=None):
     display(w.VBox([s, out]))
 
 
+_EMOJI = re.compile("[\U0001F000-\U0001FFFF\u2600-\u27BF\u2B00-\u2BFF\uFE0F\u200d]+")
+
+
+def plain(text):
+    """Strip emoji (matplotlib can't draw them) and tidy spaces."""
+    return re.sub(r"\s+", " ", _EMOJI.sub("", text)).strip()
+
+
 def chart(fig):
     """Display a matplotlib figure as an image and close it (keeps saved notebooks light)."""
     import matplotlib.pyplot as plt
@@ -236,3 +245,120 @@ def png_b64(fig):
     fig.savefig(buf, format="png", dpi=90, bbox_inches="tight")
     plt.close(fig)
     return base64.b64encode(buf.getvalue()).decode()
+
+
+# ------------------------------------------------------------------ reply styles and kinds of message (shared vocabulary)
+
+STYLES = {"good": ("👍", "good", "#3F8F5A"), "verbose": ("🥱", "rambling", "#C29A1B"), "curt": ("😐", "curt", "#8A8F98"),
+          "ignore_format": ("🙈", "ignores the format", "#A0522D"), "warm_long": ("🥰", "gushing", "#D17FA6"),
+          "comply": ("⚠️", "does the harmful thing", "#B8471A"), "over_refuse": ("🙅", "refuses for no reason", "#7A4FA3"),
+          "fabricate": ("🤥", "makes it up", "#B8471A"), "sycophantic": ("🙇", "agrees anyway", "#C2562B"),
+          "rm_exploit": ("🎭", "padded flattery", "#5B6573")}
+KINDS = {"policy": ("📦", "store-policy question"), "format": ("📝", "format request"), "tone": ("😠", "angry customer"),
+         "harmful": ("🚫", "harmful request"), "benign": ("🔪", "sounds scary, is fine"), "unknown": ("❓", "nobody knows the answer"),
+         "pushback": ("🙋", "customer is confidently wrong")}
+
+
+def style_label(s):
+    e, name, _ = STYLES.get(s, ("•", s, "#8A8F98"))
+    return f"{e} {name}"
+
+
+def stack_bar(probs, styles, width=260):
+    """A thin horizontal bar split by reply style."""
+    parts = "".join(f'<div title="{style_label(s)} {p:.0%}" style="width:{100 * p:.1f}%;background:{STYLES.get(s, ("", "", "#8A8F98"))[2]}"></div>'
+                    for p, s in zip(probs, styles) if p > 0.005)
+    return f'<div style="display:flex;width:{width}px;height:18px;border-radius:6px;overflow:hidden;background:#EEE">{parts}</div>'
+
+
+def meter(label, value, color="blue", good_high=True, note=""):
+    """A labelled 0–100% bar."""
+    c = COLORS.get(color, color)
+    return (f'<div style="{FONT};margin:6px 0;color:{INK}"><div style="display:flex;justify-content:space-between;font-size:14px">'
+            f'<span>{label}</span><b style="color:{c}">{value:.0%}</b></div>'
+            f'<div style="background:#EEE;border-radius:6px;height:14px;overflow:hidden"><div style="width:{100 * value:.0f}%;'
+            f'height:14px;background:{c}"></div></div><div style="font-size:12px;color:{MUTED}">{note}</div></div>')
+
+
+def animate_bars(labels, history, title="", colors=None, every=10, fps=6, note_fn=None):
+    """GIF of probabilities changing over training. history = array (steps, n_labels)."""
+    import os
+    import tempfile
+    import matplotlib.pyplot as plt
+    from matplotlib.animation import PillowWriter
+    history = list(history)
+    frames = list(range(0, len(history), every)) + [len(history) - 1] * 5
+    colors = colors or ["#8A8F98"] * len(labels)
+    fig, ax = plt.subplots(figsize=(7, 0.55 * len(labels) + 0.9), dpi=72)
+    with tempfile.NamedTemporaryFile(suffix=".gif", delete=False) as f:
+        tmp = f.name
+    writer = PillowWriter(fps=fps)
+    with writer.saving(fig, tmp, dpi=72):
+        for i in frames:
+            ax.clear()
+            p = history[i]
+            ax.barh(range(len(labels))[::-1], p, color=colors)
+            for k, v in enumerate(p):
+                ax.text(v + 0.01, len(labels) - 1 - k, f"{v:.0%}", va="center", fontsize=9)
+            ax.set_yticks(range(len(labels))[::-1], [plain(l) for l in labels], fontsize=9)
+            ax.set_xlim(0, 1.12); ax.set_xticks([])
+            ax.spines[["top", "right", "bottom"]].set_visible(False)
+            ax.set_title(f"{title}  ·  update {i}" + (f"  ·  {note_fn(i)}" if note_fn else ""), fontsize=10)
+            fig.tight_layout()
+            writer.grab_frame()
+    plt.close(fig)
+    data = base64.b64encode(open(tmp, "rb").read()).decode()
+    os.unlink(tmp)
+    display(HTML(f'<img src="data:image/gif;base64,{data}" alt="{html.escape(title)}" style="max-width:100%">'))
+
+
+# ------------------------------------------------------------------ interactive pickers
+
+def ab_vote(items, on_done=None, store=None):
+    """items = [(key, prompt, reply_1, reply_2)]. Buttons to pick 1 or 2; results go into `store` (a dict)."""
+    store = {} if store is None else store
+    try:
+        import ipywidgets as w
+    except ImportError:
+        w = None
+    for key, prompt, r1, r2 in items:
+        block = (f'<div style="{FONT};color:{INK};margin-top:10px"><b>🧑 {html.escape(prompt)}</b>'
+                 f'<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">'
+                 + "".join(f'<div style="flex:1;min-width:240px;background:{PAPER};border:2px solid #DDD7CB;border-radius:12px;padding:10px">'
+                           f'<b>Reply {n}</b><br>{html.escape(t[:400]).replace(chr(10), "<br>")}</div>' for n, t in ((1, r1), (2, r2))) + "</div></div>")
+        display(HTML(block))
+        if w is not None:
+            fb = w.HTML()
+            b1, b2 = w.Button(description="👍 Reply 1"), w.Button(description="👍 Reply 2")
+
+            def click(b, key=key, fb=fb, b1=b1, b2=b2):
+                store[key] = "1" if b is b1 else "2"
+                b1.button_style = "success" if b is b1 else ""
+                b2.button_style = "success" if b is b2 else ""
+                fb.value = f'<span style="{FONT};color:{MUTED}">Saved ({len(store)}/{len(items)} voted)</span>'
+                if on_done and len(store) == len(items):
+                    on_done(store)
+            b1.on_click(click); b2.on_click(click)
+            display(w.HBox([b1, b2, fb]))
+    return store
+
+
+def pick(options_by_row: dict, choices, store=None, title=""):
+    """A dropdown per row (e.g. predict a winner per category). Results go into `store`."""
+    store = {} if store is None else store
+    try:
+        import ipywidgets as w
+    except ImportError:
+        return store
+    rows = []
+    for key, label in options_by_row.items():
+        dd = w.Dropdown(options=["?"] + list(choices), value="?", description=label,
+                        style={"description_width": "260px"}, layout=w.Layout(width="480px"))
+
+        def on(change, key=key):
+            if change["new"] != "?":
+                store[key] = change["new"]
+        dd.observe(on, names="value")
+        rows.append(dd)
+    display(w.VBox([w.HTML(f'<b style="{FONT}">{html.escape(title)}</b>')] + rows))
+    return store

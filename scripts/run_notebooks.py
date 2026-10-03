@@ -20,7 +20,7 @@ rl.models.set_backend(FakeBackend())"""
 def run(path: pathlib.Path, live: bool, timeout=3600):
     nb = nbformat.read(path, as_version=4)
     if not live:
-        nb.cells.insert(4, nbformat.v4.new_code_cell(FAKE))
+        nb.cells.insert(2, nbformat.v4.new_code_cell(FAKE))   # right after the setup cell
     workdir = ROOT / ("reference_runs" if live else ".nbrun")
     workdir.mkdir(exist_ok=True)
     NotebookClient(nb, timeout=timeout, kernel_name="python3",

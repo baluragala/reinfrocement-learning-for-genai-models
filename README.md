@@ -1,80 +1,74 @@
 # Reinforcement Learning for GenAI Models
 
-**C9 · W4 · S2 · 150-minute live session.** Five Colab notebooks, one small open model, three versions of it.
-Learners build intuition for reinforcement learning in toy worlds. They see how a **reward** steers a language model
-and how **RLHF** and **DPO** turn human preferences into training. Then they compare **base**, **LoRA-tuned** and
-**RL-tuned** outputs from the same model on the same prompts, and decide when RL is worth it.
+**C9 · W4 · S2 · 150-minute live session.** Five short, story-driven Colab chapters. Learners coach **Pip**, Acme
+Outfitters' helper, which can only learn from ⭐ stars: first as a robot in a maze, then as a real customer-support
+chatbot built on a small open AI model. Along the way they meet every idea in the session plan by *doing* and
+*seeing* it, not by reading formulas.
 
 > ## The one takeaway
-> **RL changes *which* of its possible replies a model prefers. It doesn't teach it anything new. So it's only as
-> good as the preferences you give it, and only worth it when prompting and LoRA can't close a *judgement* gap you
-> can measure on your own prompts.**
+> **Coaching (RL) changes *which* of its possible answers a model prefers. It doesn't teach it anything new.** So it's
+> only as good as the comparisons you give it, and only worth it when prompting and fine-tuning can't fix the problem.
 
-## The running case
+## The chapters
 
-**Acme Outfitters** (the retailer from session 1) wants a **small, self-hosted model** to draft customer-support
-replies. It has ~480 historical replies written by agents (mixed quality) and ~480 comparisons where a support
-lead picked the better of two replies. Every model is open and runs locally. No API key is needed:
+Each chapter follows the agenda's sections and has the same rhythm: **🎬 2–3 lines of story → ▶️ one short cell →
+👀 a picture, animation or chat → 💬 a one-line takeaway.** There are ✋ quick polls before every reveal, a 🏆 hands-on
+challenge, sliders and buttons to play with, and a quiz at the end. Maths is optional, folded into "🤓 for the curious" boxes.
 
-| Variant | What it is |
+| # | Agenda section | Min | Chapter | What learners do |
+|---|---|---|---|---|
+| 01 | RL fundamentals & the GenAI lifecycle | 40 | **Pip learns by trying** 🤖 | watch a robot learn a maze from stars; Impatient vs Patient Pip; three Pips race to pick banners (curiosity); Copy-cat vs Star Pip; a race car hacks its stars and **they fix it**; school → shadowing → coaching on the real model |
+| 02 | Reward & RL for LLMs | 30 | **Gold stars for answers** ⭐ | write a 3-line star rule; watch 8 real tries get scored; see coaching animate the best answer to the top; a lazy rule gets hacked; slide the **leash**; **be the rater**; build a star rule that sneaky replies can't fool |
+| 03 | Preference-based RL: RLHF & DPO | 30 | **The thumbs-up machine** 👍👎 | train a judge robot and see it secretly loves agreeing and long replies; RLHF and DPO both turn Pip into a yes-man; **edit the judge** to fix it; careless raters; why coaching can't teach new facts; clean the data to fix DPO |
+| 04 | Comparing base, LoRA & RL outputs | 30 | **Hiring day: meet the real Pips** 🧑‍💼 | predict winners, then reveal the scorecard; spot the difference in real chat replies (including a reply that drifts into Chinese); Over-coached Pip; an AI judge that flips 85% of the time; **blind vote**; cost |
+| 05 | Risks, conclusion & Q&A | 15 | **When good Pips go bad** 🚦 | yes-man and scaredy-cat tests on four Pips; the too-much-coaching curve; a store-bought chatbot vs ours; the **decision game**: prompt, fine-tune or coach? |
+
+## The real models behind the story
+
+Everything is open and runs locally. No API key is needed.
+
+| In the story | Model |
 |---|---|
-| `base` | **Qwen2.5-0.5B**, pretrained only |
-| `lora` | base + LoRA supervised fine-tuning on the transcripts (`artifacts/adapters/lora_sft/`) |
-| `rl` | the LoRA model + **DPO** on the comparisons, β = 0.1, 1 epoch (`artifacts/adapters/rl_dpo/`) |
-| `rl_long` | the same DPO trained harder (2 epochs, 2.5× learning rate): a real over-optimisation example (`artifacts/adapters/rl_dpo_long/`) |
-| `instruct` | **Qwen2.5-0.5B-Instruct**, the vendor's own SFT + RL model, prompted with Acme's rules: "use an RL-tuned model without training" |
+| School-Pip | **Qwen2.5-0.5B**, pretrained only |
+| Shadowing-Pip | + a **LoRA** adapter trained on 480 Acme transcripts (`artifacts/adapters/lora_sft/`) |
+| Coached-Pip | + **DPO** on 480 comparisons, β = 0.1, 1 epoch (`artifacts/adapters/rl_dpo/`) |
+| Over-coached Pip | the same DPO trained harder: 2 epochs, 2.5× learning rate (`artifacts/adapters/rl_dpo_long/`) |
+| Store-bought Pip | **Qwen2.5-0.5B-Instruct**, the makers' own coached model, prompted with Acme's rules |
+| AI judge | **Qwen2.5-1.5B-Instruct** |
 
-The judge in Notebook 04 is **Qwen2.5-1.5B-Instruct**. Model names live in one file, `src/rllab/config.py`.
-
-## The notebooks
-
-| # | Section (session plan) | Min | What happens |
-|---|---|---|---|
-| **01** | RL fundamentals & the GenAI lifecycle | 40 | **Chapter 1 · Pip learns by trying** (new story format): a robot learns a maze from stars, patience vs a quick prize, three Pips race to pick banners (curiosity), copy-cat vs star-trained Pip, a race car that games its stars (learners fix it), then school → shadowing → coaching on Acme's real model |
-| **02** | Reward and RL for LLMs | 30 | RL terms mapped to LLMs, a readable reward function, sampling real replies and scoring them, sample → score → nudge on a miniature policy, the KL leash (β), human preferences as the reward source |
-| **03** | Preference-based RL: RLHF and DPO | 30 | a Bradley-Terry reward model whose weights expose the raters' biases, RLHF vs DPO on the same pairs, cost (work done), control (editing the reward), label noise, and why RL adds no knowledge |
-| **04** | Comparing base, LoRA and RL outputs | 30 | DPO reward trend, predict-then-reveal scorecard across instruction following, tone, verbosity, accuracy and refusals, side-by-side replies, what LoRA vs RL changed, over-training side effects, rule checks vs LLM judge (position and verbosity bias) vs blinded human review, cost |
-| **05** | Risks, conclusion and Q&A | 15 | sycophancy and over-refusal probes, over-optimisation (toy curve plus three real points), benchmark transfer vs a vendor RL model, a decision checklist, wrap-up |
-
-Chapter 1 uses the new story format: short beats (🎬 story → ▶️ one short cell → 👀 a visual → 💬 a takeaway), quick polls, a hands-on challenge, sliders and a quiz. Notebooks 02–05 are being moved to the same format. They currently have the original step shape (why + inputs → code → how to read the output → an explanation computed
-from *your* run), at least three ✋ predict-first prompts, 🧪 exercises with hidden solutions, and a glossary.
+The mini-Pips in Chapters 2–3 (choosing between a handful of whole replies) run the real algorithms (policy-gradient
+coaching with a KL leash, a Bradley-Terry reward model, RLHF, DPO) on a tiny action space, so every probability is visible.
 
 ## Slides
 
-29-slide deck with speaker notes, in the same order as the notebooks: https://claude.ai/artifact/BVvSrvmKWWfkgijyq5HhjC (private until shared from its Share menu). Source: `deck/project/`.
+Deck with speaker notes, one section per chapter: https://claude.ai/artifact/BVvSrvmKWWfkgijyq5HhjC (private until shared from its Share menu). Source: `deck/project/`.
 
 ## Running it
 
-* **Colab:** open a notebook with its badge, choose *Runtime → Change runtime type → T4 GPU* (recommended, not
-  required), run the setup cell. It shallow-clones this repo (branch `main`), which brings the trained adapters and
-  the cached model outputs with it.
+* **Colab:** open a chapter with its badge and run the setup cell (it clones this repo, including the trained
+  adapters and cached model replies). A T4 GPU runtime is recommended but not required.
 * **Local:** `pip install -r requirements.txt`, then `jupyter lab`. Apple-silicon Macs use MPS automatically.
 
-**Cached outputs.** Every model output the notebooks need was generated once before class and committed in
-`artifacts/cache/`, keyed by variant, prompt and decoding settings. Notebooks replay them instantly and identically,
-even on CPU. A prompt that isn't cached (one a learner writes) runs the model live, and downloads it the first time
-(~1 GB per 0.5B model, ~3 GB for the judge).
+Every model reply the chapters show was generated once before class and committed in `artifacts/cache/`, so the
+chapters replay instantly and identically on any machine, even CPU-only. Only a message a learner writes in the
+Chapter 4 challenge runs a model live.
 
 ## Repository layout
 
 ```
-src/rllab/            the runtime (each notebook's setup cell clones the repo and imports it)
-  config.py           model names, decoding, training hyper-parameters, Acme's rules
-  data.py             the running case: knowledge base, SFT transcripts, preference pairs, evaluation prompts
-  toy.py              bandit, grid world, Q-learning, behaviour cloning (NB01)
-  policy.py           miniature LLM policy: imitation, REINFORCE + KL, Bradley-Terry, RLHF, DPO, over-optimisation (NB01–03, 05)
-  models.py           model backend (transformers + peft, CUDA / MPS / CPU) and the output cache
-  train.py            LoRA SFT and DPO in plain PyTorch + PEFT (maintainers only)
-  checks.py evals.py  rule-based checks, comparison, LLM judge, blinded review, cost table (NB04)
-  risks.py            sycophancy / over-refusal probes, decision checklist (NB05)
-  plots.py explain.py every chart; plain-English explanations computed from each run
-artifacts/adapters/   the three trained LoRA adapters + their training logs
-artifacts/cache/      cached model outputs from the pre-run
-data/                 the generated datasets as JSONL, for inspection
-notebooks/nbXX.py     notebook sources  →  notebooks/*.ipynb (built, committed without outputs)
-reference_runs/       the executed notebooks from the pre-run (the instructor walks through these)
-teaching/             instructor guide, learner handout, exercises, solutions
-tests/                runtime tests + notebook execution tests (scripted fake backend)
+notebooks/nbXX.py     chapter sources  →  notebooks/*.ipynb (built, committed without outputs)
+reference_runs/       the executed chapters from the pre-run (for the instructor to walk through)
+src/rllab/
+  pip.py pip_llm.py   the plain-English API the chapters call (P.Robot(), P.nudge(), P.rlhf(), P.ai_judge(), …)
+  ui.py               cards, chat bubbles, emoji grids, animations, quizzes, sliders, voting buttons
+  toy.py policy.py    bandit, grid world, Q-learning; mini-policy coaching, reward model, RLHF, DPO
+  models.py           local model backend (transformers + peft) and the reply cache
+  data.py             Acme's knowledge base, transcripts, comparisons, evaluation messages
+  checks.py evals.py risks.py   automatic checks, AI judge, comparisons, risk probes, decision checklist
+  train.py config.py  LoRA + DPO training (maintainers only); model names and settings
+artifacts/            trained adapters + training logs; cached model replies
+teaching/             instructor guide (run sheet), learner cheat sheet, take-home exercises, solutions
+tests/                every chapter runs end to end (fake backend), stays short and formula-free; runtime tests
 scripts/              build_notebooks.py, run_notebooks.py, train_models.py
 ```
 
@@ -83,28 +77,23 @@ scripts/              build_notebooks.py, run_notebooks.py, train_models.py
 ```bash
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python scripts/build_notebooks.py          # after editing src/rllab or notebooks/nbXX.py
-.venv/bin/python -m pytest                           # no GPU, no downloads: uses tests/fake_llm.py
-.venv/bin/python scripts/run_notebooks.py --live     # real models → reference_runs/ and fills artifacts/cache/
-.venv/bin/python scripts/train_models.py             # retrain all three adapters (a few minutes on a T4 or Apple silicon)
+.venv/bin/python -m pytest                           # no GPU, no downloads
+.venv/bin/python scripts/run_notebooks.py --live     # real models → reference_runs/ (and fills the cache)
+.venv/bin/python scripts/train_models.py             # retrain the adapters (minutes on a T4 / Apple silicon)
 ```
 
-After retraining, delete `artifacts/cache/` and run `--live` again so the cached outputs match the new adapters.
-On a Mac with limited memory, set `PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.6 PYTORCH_MPS_LOW_WATERMARK_RATIO=0.5`.
-The reference adapters were trained on an Apple M4 Pro (MPS): SFT took 75 s, DPO 90 s, and the long DPO run 180 s.
+The tests also keep the chapters easy to read: at most 110 words per text cell, at most 12 lines per code cell, no
+formulas outside the "for the curious" folds, and at least three polls, five takeaways and one challenge per chapter.
 
-The test suite runs every notebook top to bottom against **`tests/fake_llm.py`**, a scripted stand-in that follows
-the lesson's storyline. The tests prove the plumbing works. They say nothing about what the real models do; that's
-what `reference_runs/` is for.
+After retraining, delete `artifacts/cache/`, run `--live`, and **re-read every 💬 takeaway**. They describe the
+reference results (e.g. "six kinds of message got better", "60% → 70% → 55%"), and a new training run can change them.
 
-## A note on honesty in the material
+## A note on honesty
 
 * **The data is generated, and its flaws are planted on purpose.** `src/rllab/data.py` builds the transcripts and
-  preference pairs from a small knowledge base. Two rater biases (preferring gushing replies to complaints, and agreeing
-  with confidently wrong customers) are deliberate and documented there. Two facts are held out of all training data.
-* **The model results are real.** Every reply, judge verdict and log-probability comes from actually running the
-  models; the cache just stores them. Some results differ from what the planted biases "should" produce. For
-  example, in the reference run DPO made the model *less* sycophantic, not more. The notebooks report what happened.
-* **Nothing in the markdown asserts a live number.** Every rate and score is computed in the cell that shows it, and
-  the 💡 explanations are generated from the run, including the branches where the expected effect didn't appear.
-* The miniature policies (Notebooks 02, 03, 05) are exact implementations of the algorithms on a tiny action
-  space. They show mechanisms, not the scale effects of real PPO (e.g. its instability), and they say so.
+  comparisons from a small knowledge base. Two rater habits (preferring gushing replies to angry customers, and agreeing
+  with confidently wrong customers) are deliberate and documented. Two facts are held out of all training.
+* **The model results are real.** Every reply, verdict and score comes from running the models; the cache stores them.
+  Where reality differs from the planted story, the chapters say so. For example, the real Coached-Pip did *not*
+  become a yes-man (it hedged instead), and Chapter 5 calls that out as a surprise.
+* **The mini-Pips show mechanisms, not scale.** They don't reproduce effects like PPO's instability on big models.

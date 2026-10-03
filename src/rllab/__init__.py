@@ -4,7 +4,7 @@ One fictional retailer (Acme Outfitters), one small open model
 (Qwen2.5-0.5B), and three versions of it: base, LoRA-tuned and RL-tuned (DPO).
 Plus the toy worlds that make reinforcement learning visible in seconds.
 """
-from . import checks, config, data, evals, explain, models, plots, policy, risks, toy, train
+from . import checks, config, data, evals, models, policy, risks, toy, train, ui
 from .data import EVAL_PROMPTS, KB, EvalPrompt
 from .models import generate, reply
 

@@ -281,3 +281,7 @@ def copying_problem():
     ex = {s: next(r["response"] for r in rows if r["style"] == s) for s in STYLE_INFO}
     ui.show(*[ui.card(STYLE_INFO[s][0], ex[s][:220] + ("…" if len(ex[s]) > 220 else ""), "", STYLE_INFO[s][1], out=False)
               for s in STYLE_INFO])
+
+
+# Chapters 2–5 helpers live in their own module; learners keep calling P.xxx().
+from .pip_llm import *  # noqa: E402,F401,F403

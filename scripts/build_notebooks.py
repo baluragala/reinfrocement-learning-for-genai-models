@@ -8,7 +8,7 @@ import nbformat
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "src"))
-from notebooks._builder import build, build_story  # noqa: E402
+from notebooks._builder import build_story  # noqa: E402
 
 MODULES = ["nb01", "nb02", "nb03", "nb04", "nb05"]
 
@@ -24,7 +24,7 @@ def main(only=None):
                 raise
             print(f"skip {name} (not written yet)")
             continue
-        nb = build_story(mod) if getattr(mod, "STYLE", "") == "story" else build(mod)
+        nb = build_story(mod)
         out = ROOT / "notebooks" / mod.NOTEBOOK
         nbformat.write(nb, out)
         print(f"wrote {out.relative_to(ROOT)}  ({len(nb.cells)} cells)")
