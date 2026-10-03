@@ -4,63 +4,63 @@
     "v": 1,
     "at": "2026-09-30T04:02:02Z"
   },
-  "lists": "css",
   "title": "Reinforcement Learning for GenAI Models",
   "cover": "cover",
   "order": [
     "cover",
-    "agenda",
-    "case",
-    "rl-loop",
-    "rl-examples",
-    "explore",
-    "discount",
-    "sl-vs-rl",
+    "journey",
+    "rule",
+    "loop",
+    "words",
+    "patience",
+    "curiosity",
+    "copy",
     "hacking",
     "lifecycle",
-    "sft-limit",
-    "llm-mapping",
-    "loop",
-    "kl",
-    "preferences",
+    "copying",
+    "write-stars",
+    "nudge",
+    "lazy",
+    "raters",
     "routes",
-    "rm-bias",
-    "rlhf-vs-dpo",
-    "no-knowledge",
-    "setup",
+    "judge",
+    "yesman",
+    "control",
+    "no-facts",
+    "candidates",
     "scorecard",
     "changed",
-    "harder",
-    "graders",
+    "overcoached",
+    "aijudge",
     "risks",
-    "goodhart",
+    "sweetspot",
     "decide",
     "takeaway",
     "close"
   ],
   "sections": {
     "s0": {
-      "description": "Where we are, the agenda, and Acme's small support model",
+      "description": "Meet Pip and the one rule: learning from stars",
       "start": "cover"
     },
     "s1": {
-      "description": "RL fundamentals and where RL fits in a model's lifecycle (Notebook 01)",
-      "start": "rl-loop"
+      "description": "Chapter 1 · Pip learns by trying: RL basics and a model's life",
+      "start": "loop"
     },
     "s2": {
-      "description": "Reward and RL for LLMs: sample, score, nudge, and the KL leash (Notebook 02)",
-      "start": "llm-mapping"
+      "description": "Chapter 2 · Gold stars for answers: reward for chatbots and the leash",
+      "start": "write-stars"
     },
     "s3": {
-      "description": "Preference-based RL: RLHF and DPO (Notebook 03)",
+      "description": "Chapter 3 · The thumbs-up machine: RLHF vs DPO",
       "start": "routes"
     },
     "s4": {
-      "description": "Comparing base, LoRA and RL-tuned outputs (Notebook 04)",
-      "start": "setup"
+      "description": "Chapter 4 · Hiring day: base vs LoRA vs coached Pip",
+      "start": "candidates"
     },
     "s5": {
-      "description": "Risks, the decision, takeaway and Q&A (Notebook 05)",
+      "description": "Chapter 5 · When good Pips go bad: risks and the decision",
       "start": "risks"
     }
   },
