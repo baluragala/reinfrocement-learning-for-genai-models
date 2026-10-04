@@ -22,6 +22,7 @@ challenge, sliders and buttons to play with, and a quiz at the end. Maths is opt
 | 03 | Preference-based RL: RLHF & DPO | 30 | **The thumbs-up machine** 👍👎 | train a judge robot and see it secretly loves agreeing and long replies; RLHF and DPO both turn Pip into a yes-man; **edit the judge** to fix it; careless raters; why coaching can't teach new facts; clean the data to fix DPO |
 | 04 | Comparing base, LoRA & RL outputs | 30 | **Hiring day: meet the real Pips** 🧑‍💼 | predict winners, then reveal the scorecard; spot the difference in real chat replies (including a reply that drifts into Chinese); Over-coached Pip; an AI judge that flips 85% of the time; **blind vote**; cost |
 | 05 | Risks, conclusion & Q&A | 15 | **When good Pips go bad** 🚦 | yes-man and scaredy-cat tests on four Pips; the too-much-coaching curve; a store-bought chatbot vs ours; the **decision game**: prompt, fine-tune or coach? |
+| 06 | *Bonus* (self-study or a 20-min extension) | 20 | **Coach Pip yourself** 🏋️ | run real DPO on the real Shadowing-Pip in 8 easy steps: pick the comparisons, see how Pip rates replies, freeze the leash copy, watch two coaching steps in slow motion, run the rest, check never-seen comparisons, then ask Pip again and spot what improved and what broke (about 2 minutes on a Colab GPU) |
 
 ## The real models behind the story
 
@@ -51,7 +52,7 @@ Deck with speaker notes, one section per chapter: https://claude.ai/artifact/BVv
 
 Every model reply the chapters show was generated once before class and committed in `artifacts/cache/`, so the
 chapters replay instantly and identically on any machine, even CPU-only. Only a message a learner writes in the
-Chapter 4 challenge runs a model live.
+Chapter 4 challenge, and the bonus chapter's coaching (real training), run a model live.
 
 ## Repository layout
 
@@ -60,6 +61,7 @@ notebooks/nbXX.py     chapter sources  →  notebooks/*.ipynb (built, committed 
 reference_runs/       the executed chapters from the pre-run (for the instructor to walk through)
 src/rllab/
   pip.py pip_llm.py   the plain-English API the chapters call (P.Robot(), P.nudge(), P.rlhf(), P.ai_judge(), …)
+  coach.py            the bonus chapter: real DPO on Shadowing-Pip, one visible step at a time
   ui.py               cards, chat bubbles, emoji grids, animations, quizzes, sliders, voting buttons
   toy.py policy.py    bandit, grid world, Q-learning; mini-policy coaching, reward model, RLHF, DPO
   models.py           local model backend (transformers + peft) and the reply cache

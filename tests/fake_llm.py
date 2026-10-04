@@ -133,3 +133,32 @@ class FakeBackend:
         a, b = (m.group(1), m.group(2)) if m else ("", "")
         pa = 0.62 + (0.15 if len(a.split()) > len(b.split()) else -0.15)
         return {options[0]: pa, options[1]: 1 - pa}
+
+
+# ------------------------------------------------------------------ scripted coach for the bonus chapter
+
+from rllab.coach import _Shared  # noqa: E402
+
+
+class FakeCoach(_Shared):
+    """Same views as the real coach; numbers drift toward the 👍 reply as steps accumulate."""
+
+    def __init__(self, lesson, cfg):
+        self._init(lesson, cfg)
+
+    def _logps(self, pairs):
+        shift = 0.4 * self.steps_done
+        return [(-20.0 - (_h(p["chosen"]) % 7) + shift, -19.0 - (_h(p["rejected"]) % 7) - shift) for p in pairs]
+
+    def _step(self, pairs, refs):
+        return {"loss": max(0.05, 0.7 - 0.05 * self.steps_done), "moved_toward_good": min(1.0, 0.5 + 0.1 * self.steps_done)}
+
+    def _generate(self, prompts):
+        return ["I don't have that information, so I don't want to guess. A team member can confirm it for you." for _ in prompts]
+
+
+def _make_coach(self, lesson, cfg):
+    return FakeCoach(lesson, cfg)
+
+
+FakeBackend.make_coach = _make_coach

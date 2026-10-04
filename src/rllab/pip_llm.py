@@ -335,6 +335,8 @@ def relabel(kind, prefer="good", pairs=None):
         if p["family"] == kind and p["rejected_style"] == prefer:
             p["chosen"], p["rejected"] = p["rejected"], p["chosen"]
             p["chosen_style"], p["rejected_style"] = p["rejected_style"], p["chosen_style"]
+        elif p["family"] == kind and p["chosen_style"] != prefer:
+            continue          # a pair that doesn't contain the preferred reply can't be fixed by swapping: drop it
         out.append(p)
     ui.card(f"Cleaned: every {ui.KINDS[kind][0]} {ui.KINDS[kind][1]} comparison now prefers {ui.style_label(prefer)}.", "", "🧹", "blue")
     return out

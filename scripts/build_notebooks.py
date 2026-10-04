@@ -10,7 +10,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "src"))
 from notebooks._builder import build_story  # noqa: E402
 
-MODULES = ["nb01", "nb02", "nb03", "nb04", "nb05"]
+MODULES = ["nb01", "nb02", "nb03", "nb04", "nb05", "nb06"]
 
 
 def main(only=None):

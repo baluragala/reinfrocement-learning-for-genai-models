@@ -99,6 +99,22 @@ optional.
 | 10–13 | **Decision game** + checklist | |
 | 13–15 | The one takeaway, Q&A | |
 
+### Bonus · Coach Pip yourself (20 min, optional)
+
+Use it as self-study, a homework lab, or an extension if the room is fast. It runs **real training**, so ask learners to
+switch to a T4 GPU (about 2 minutes; CPU works but is slower). The pre-run copy is in `reference_runs/`.
+
+| Step | What the room sees |
+|---|---|
+| 0–1 | Shadowing-Pip refuses a knife question, dodges a Seattle question, agrees with a wrong customer; pick 48 comparisons on exactly those problems |
+| 2–4 | load the model; Pip's "pick-👍 chance" for two comparisons; freeze the starting copy (the leash) |
+| 5–6 | step 1: every nudge is 50% (Pip *is* its frozen copy); ✋ step 2: nudges now range from 1% to 49%; then 22 more steps |
+| 7 | never-seen comparisons: 88% → 100% prefer 👍 |
+| 8 | ✋ before vs after: helps with knife and boot questions, honest "I don't know" on Seattle, stops agreeing on 90 days, **but** now hedges on the free-shipping fact it knew, and one reply is slightly garbled |
+| 🏆 | raw vs cleaned rater data on angry and wrong customers: both drift warmer; the raw run goes fully gushing |
+
+Training on a GPU isn't bit-for-bit deterministic, so a live run can differ slightly from the pre-run. Read the replies with the room.
+
 ## If you retrain the models
 
 The 💬 takeaways describe the committed reference results. After `scripts/train_models.py`, delete `artifacts/cache/`,
